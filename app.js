@@ -1,11 +1,29 @@
 const counterDisplay = document.getElementById("counter");
 const addEntryBtn = document.getElementById("add-entry");
+const subtractCounterBtn = document.getElementById("subtract-counter");
+const resetCounterBtn = document.getElementById("reset-counter");
 const formsContainer = document.getElementById("forms");
 
 let emailCount = parseInt(localStorage.getItem("emailCount")) || 0;
 updateCounter();
 
-addEntryBtn.onclick = () => {
+addEntryBtn.onclick = () => addForm();
+subtractCounterBtn.onclick = () => {
+  emailCount = Math.max(0, emailCount - 1);
+  localStorage.setItem("emailCount", emailCount);
+  updateCounter();
+};
+resetCounterBtn.onclick = () => {
+  emailCount = 0;
+  localStorage.setItem("emailCount", emailCount);
+  updateCounter();
+};
+
+function updateCounter() {
+  counterDisplay.textContent = `Emails Today: ${emailCount} / 100`;
+}
+
+function addForm() {
   const form = document.createElement("form");
   form.innerHTML = `
     <input placeholder="Name" required />
@@ -26,6 +44,7 @@ addEntryBtn.onclick = () => {
     <button type="button" class="generate-btn">Generate Email</button>
     <div class="output"></div>
     <button type="button" class="copy-btn">Copy Email</button>
+    <button type="button" class="delete-btn">Delete</button>
   `;
   formsContainer.appendChild(form);
 
@@ -33,6 +52,7 @@ addEntryBtn.onclick = () => {
   const output = form.querySelector(".output");
   const copyBtn = form.querySelector(".copy-btn");
   const generateBtn = form.querySelector(".generate-btn");
+  const deleteBtn = form.querySelector(".delete-btn");
   const select = form.querySelector(".purpose-select");
   const [name, email, role, company] = form.querySelectorAll("input");
 
@@ -67,8 +87,8 @@ addEntryBtn.onclick = () => {
     document.execCommand("copy");
     document.body.removeChild(temp);
   };
-};
 
-function updateCounter() {
-  counterDisplay.textContent = `Emails Today: ${emailCount} / 100`;
+  deleteBtn.onclick = () => {
+    form.remove();
+  };
 }
