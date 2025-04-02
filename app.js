@@ -133,9 +133,9 @@ function addForm() {
     
       linkedIn_interest: `Hi [Name], 
     
-    Thank you for agreeing to refer me for [Role] role at [Company]. I truly appreciate your support.
+    So awesome to see your team hiring for [Role]. I am interested in the opportunity & would love to be considered.
     
-    I look forward to next steps in the process.
+    I am a MBA grad from UMN and I have 5+ years of experience in software/product management. I think my skills would be a great fit. I am looking forward to connecting.
     
     Regards,  
     Ankit`,
