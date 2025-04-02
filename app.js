@@ -63,76 +63,114 @@ function addForm() {
   const [name, email, role, company] = form.querySelectorAll("input");
 
   const templates = {
-    referral: "Subject: Thank You for Offering to Refer Me at [Company], Job Links/Ids are attached \n\n"/
-              "Hi [Name], \n\n Thank you so much for agreeing to refer me for roles at [Company]. I truly appreciate your support."/
-              "Here are the roles I’m most interested in: \n\n [Role] \n\n"/
-              "I've attached my resume. Please let me know if you need any additional information from my end. "/ 
-              "Thanks again for your help!",
-    interest: "Subject: Regarding Interest in [Role] role at [Company] \n\n"/
+    referral: `Subject: Thank You for Offering to Refer Me at [Company], Job Links/Ids are attached
 
-              "Hi [Name], \n\n I’m Ankit, a full-time MBA (STEM-designated) student at University of Minnesota. I have a Bachelor's "/
-              "in Computer Science from IIT Kanpur. I’m looking to transition into [Role] roles and would love the opportunity to join [Company]. \n\n"/
-              
-              "Before pursuing my MBA, I spent five years as a Software Engineer on the SD-WAN team at Juniper Networks, where I worked "/
-              "in a highly technical environment. During my MBA, I served as the founding Product Manager for a rideshare startup in "/
-              "Minneapolis through a summer internship. I’ve also worked as a strategy consultant for Minnesota-based companies, "/
-              "helping shape their go-to-market strategies.\n\n"/
-              "I’ve also applied to the following roles at [Company] \n [Role]\n\n"/ 
-
-              "If possible, I’d really appreciate a referral or connection to a hiring manager in your network. I've attached my "/
-              "resume for your reference. Looking forward to hearing from you!",
-
-    applied: "Subject: Reaching out regarding [Role] at [Company]\n\n"/
-
-              "Hi [Name], \n\n I recently applied for the [Role] position on your team at [Company], and wanted to reach out "/
-              "directly to express my enthusiasm.\n\n"/
-
-              "Before pursuing my MBA, I spent five years as a Software Engineer on the SD-WAN team at Juniper Networks, where I worked "/
-              "in a highly technical environment. During my MBA, I served as the founding Product Manager for a rideshare startup in "/
-              "Minneapolis through a summer internship. I’ve also worked as a strategy consultant for Minnesota-based companies, "/
-              "helping shape their go-to-market strategies.\n\n"/
-
-              "I've attached my resume. If possible, I welcome the opportunity to connect with you to get more insights. "/
-              "Thank you for your time — I look forward to the possibility of next steps!",
-
-    followup: "Subject: Following-up regarding [Role] at [Company]\n\n"/
-
-              "Hi [Name], \n\n I hope you're doing well. I wanted to follow up on my previous message.\n\n"/
-
-              "Please let me know if you need any additional information from my end. "/ 
-              "Thanks again for your time!",
-
-    explore: "Subject: Regarding Interest in [Role] role at [Company] \n\n"/
-
-              "Hi [Name], \n\n I’m Ankit, a full-time MBA (STEM-designated) student at University of Minnesota. I have a Bachelor's "/
-              "in Computer Science from IIT Kanpur. I’m looking to transition into [Role] roles and would love the opportunity to join [Company]. \n\n"/
-              
-              "Before pursuing my MBA, I spent five years as a Software Engineer on the SD-WAN team at Juniper Networks, where I worked "/
-              "in a highly technical environment. During my MBA, I served as the founding Product Manager for a rideshare startup in "/
-              "Minneapolis through a summer internship. I’ve also worked as a strategy consultant for Minnesota-based companies, "/
-              "helping shape their go-to-market strategies.\n\n"/
-              "I’ve also applied to the following roles at [Company] \n [Role]\n\n"/ 
-
-              "If possible, I’d really appreciate a referral or connection to a hiring manager in your network. I've attached my "/
-              "resume for your reference. Looking forward to hearing from you!",
-
-    linkedIn_referral: "Hi [Name], \n\n Thank you for agreeing to refer me for [Role] role at [Company]. I truly appreciate your support. \n\n"/
-              "I look forward to next steps in the process.\n\n Regards,\nAnkit",
-
-    linkedIn_interest: "Hi [Name], \n\n Thank you for agreeing to refer me for [Role] role at [Company]. I truly appreciate your support. \n\n"/
-              "I look forward to next steps in the process.\n\n Regards,\nAnkit",
-
-    linkedIn_applied: "Hi [Name], \n\n So awesome to see your team hiring for [ROLE]. I've applied & would love to be considered.\n\n"/
-              "I am a MBA grad from UMN and I have 5+ years of experience in software/product management. I think my skills "/
-              "would a great fit. I am looking forward to connecting.\n\n Regards,\nAnkit",
-
-    linkedIn_followup: "Hi [Name], \n\n following up on my earlier note—I'm exploring [Role] opportunities at [Company] and would really appreciate "/
-                       "your insights. \n\n Would love to connect if you're open.\n\n Regards,\nAnkit",
-
-    linkedIn_explore: "Hi [Name], \n\n I am a MBA grad from UMN and I have 5+ years of experience in software/product management."/
-              "I am exploring [Role] roles and would love to join [Company]. I think my skills would a great fit for your team. I am looking forward to connecting.\n\n Regards,\nAnkit",
-
-    linkedIn_connection: "Hi [Name], \n\n I came across your profile and was really impressed by your career journey. I’d love to connect and stay in touch.\n\n Regards,\nAnkit",
+    Hi [Name], 
+    
+    Thank you so much for agreeing to refer me for roles at [Company]. I truly appreciate your support.
+    
+    Here are the roles I’m most interested in:  
+    [Role]
+    
+    I've attached my resume. Please let me know if you need any additional information from my end. 
+    
+    Thanks again for your help!`,
+    
+      interest: `Subject: Regarding Interest in [Role] role at [Company]
+    
+    Hi [Name], 
+    
+    I’m Ankit, a full-time MBA (STEM-designated) student at University of Minnesota. I have a Bachelor's in Computer Science from IIT Kanpur. I’m looking to transition into [Role] roles and would love the opportunity to join [Company]. 
+    
+    Before pursuing my MBA, I spent five years as a Software Engineer on the SD-WAN team at Juniper Networks, where I worked in a highly technical environment. During my MBA, I served as the founding Product Manager for a rideshare startup in Minneapolis through a summer internship. I’ve also worked as a strategy consultant for Minnesota-based companies, helping shape their go-to-market strategies.
+    
+    I’ve also applied to the following roles at [Company]:  
+    [Role]
+    
+    If possible, I’d really appreciate a referral or connection to a hiring manager in your network. I've attached my resume for your reference. Looking forward to hearing from you!`,
+    
+      applied: `Subject: Reaching out regarding [Role] at [Company]
+    
+    Hi [Name], 
+    
+    I recently applied for the [Role] position on your team at [Company], and wanted to reach out directly to express my enthusiasm.
+    
+    Before pursuing my MBA, I spent five years as a Software Engineer on the SD-WAN team at Juniper Networks, where I worked in a highly technical environment. During my MBA, I served as the founding Product Manager for a rideshare startup in Minneapolis through a summer internship. I’ve also worked as a strategy consultant for Minnesota-based companies, helping shape their go-to-market strategies.
+    
+    I've attached my resume. If possible, I welcome the opportunity to connect with you to get more insights. Thank you for your time — I look forward to the possibility of next steps!`,
+    
+      followup: `Subject: Following-up regarding [Role] at [Company]
+    
+    Hi [Name], 
+    
+    I hope you're doing well. I wanted to follow up on my previous message.
+    
+    Please let me know if you need any additional information from my end. 
+    
+    Thanks again for your time!`,
+    
+      explore: `Subject: Regarding Interest in [Role] role at [Company]
+    
+    Hi [Name], 
+    
+    I’m Ankit, a full-time MBA (STEM-designated) student at University of Minnesota. I have a Bachelor's in Computer Science from IIT Kanpur. I’m looking to transition into [Role] roles and would love the opportunity to join [Company]. 
+    
+    Before pursuing my MBA, I spent five years as a Software Engineer on the SD-WAN team at Juniper Networks, where I worked in a highly technical environment. During my MBA, I served as the founding Product Manager for a rideshare startup in Minneapolis through a summer internship. I’ve also worked as a strategy consultant for Minnesota-based companies, helping shape their go-to-market strategies.
+    
+    I’ve also applied to the following roles at [Company]:  
+    [Role]
+    
+    If possible, I’d really appreciate a referral or connection to a hiring manager in your network. I've attached my resume for your reference. Looking forward to hearing from you!`,
+    
+      linkedIn_referral: `Hi [Name], 
+    
+    Thank you for agreeing to refer me for [Role] role at [Company]. I truly appreciate your support.
+    
+    I look forward to next steps in the process.
+    
+    Regards,  
+    Ankit`,
+    
+      linkedIn_interest: `Hi [Name], 
+    
+    Thank you for agreeing to refer me for [Role] role at [Company]. I truly appreciate your support.
+    
+    I look forward to next steps in the process.
+    
+    Regards,  
+    Ankit`,
+    
+      linkedIn_applied: `Hi [Name], 
+    
+    So awesome to see your team hiring for [Role]. I've applied & would love to be considered.
+    
+    I am a MBA grad from UMN and I have 5+ years of experience in software/product management. I think my skills would be a great fit. I am looking forward to connecting.
+    
+    Regards,  
+    Ankit`,
+    
+      linkedIn_followup: `Hi [Name], 
+    
+    Following up on my earlier note—I'm exploring [Role] opportunities at [Company] and would really appreciate your insights.
+    
+    Would love to connect if you're open.
+    
+    Regards,  
+    Ankit`,
+    
+      linkedIn_explore: `Hi [Name], 
+    
+    I am a MBA grad from UMN and I have 5+ years of experience in software/product management. I am exploring [Role] roles and would love to join [Company]. I think my skills would be a great fit for your team. I am looking forward to connecting.
+    
+    Regards,  
+    Ankit`,
+    
+      linkedIn_connection: `Hi [Name], 
+    
+    I came across your profile and was really impressed by your career journey. I’d love to connect and stay in touch.
+    
+    Regards,  
+    Ankit`
   };
 
   select.onchange = () => {
