@@ -1,115 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Copy, Plus } from "lucide-react";
-import { marked } from "marked";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Job Search Email Generator</h1>
+    <p id="counter">Emails Today: 0 / 100</p>
+    <button id="add-entry">＋ Add Entry</button>
+    <div id="forms"></div>
+  </div>
 
-function EmailForm({ onGenerate }) {
-  const [role, setRole] = useState("");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [company, setCompany] = useState("");
-  const [purpose, setPurpose] = useState("");
-  const [generatedEmail, setGeneratedEmail] = useState("");
-
-  const templates = {
-    referral: "Hi [Name],\n\nI saw a [Role] opening at [Company] and wanted to ask if you'd be open to referring me...",
-    interest: "Hi [Name],\n\nI'm interested in the [Role] role at [Company] and would love to connect...",
-    applied: "Hi [Name],\n\nI've applied to the [Role] role at [Company] and wanted to follow up...",
-    followup: "Hi [Name],\n\nJust checking in on the [Role] role at [Company] we discussed earlier...",
-    explore: "Hi [Name],\n\nI’m currently exploring new opportunities in [Role] and came across [Company]..."
-  };
-
-  const fillTemplate = () => {
-    let filled = purpose
-      .replaceAll("[Name]", name)
-      .replaceAll("[Role]", role)
-      .replaceAll("[Company]", company);
-    setGeneratedEmail(filled);
-    onGenerate();
-  };
-
-  const copyEmail = () => {
-    navigator.clipboard.writeText(generatedEmail);
-  };
-
-  return (
-    <Card className="mb-4 p-4">
-      <CardContent className="grid gap-2">
-        <Input placeholder="Role" value={role} onChange={(e) => setRole(e.target.value)} />
-        <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <Input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <Input placeholder="Company" value={company} onChange={(e) => setCompany(e.target.value)} />
-
-        <div className="flex gap-2 flex-wrap">
-          {Object.entries(templates).map(([key, text]) => (
-            <Button key={key} variant="outline" onClick={() => setPurpose(text)}>
-              {key}
-            </Button>
-          ))}
-        </div>
-
-        <Textarea
-          placeholder="Purpose"
-          rows={6}
-          value={purpose}
-          onChange={(e) => setPurpose(e.target.value)}
-        />
-
-        <Button onClick={fillTemplate}>Generate Email</Button>
-
-        {generatedEmail && (
-          <div className="mt-4">
-            <div
-              className="prose border p-3 rounded bg-gray-100"
-              dangerouslySetInnerHTML={{ __html: marked.parse(generatedEmail) }}
-            ></div>
-            <Button onClick={copyEmail} className="mt-2" variant="secondary">
-              <Copy className="mr-2 h-4 w-4" /> Copy Email
-            </Button>
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
-export default function App() {
-  const [emailCount, setEmailCount] = useState(0);
-  const [forms, setForms] = useState([0]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("emailCount");
-    if (stored) setEmailCount(parseInt(stored));
-  }, []);
-
-  const incrementCount = () => {
-    const newCount = emailCount + 1;
-    setEmailCount(newCount);
-    localStorage.setItem("emailCount", newCount);
-  };
-
-  return (
-    <div className="max-w-3xl mx-auto p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Job Search Email Generator</h1>
-        <div className="text-right">
-          <p>Emails Today: {emailCount} / 100</p>
-        </div>
-      </div>
-
-      {forms.map((id, i) => (
-        <EmailForm key={id} onGenerate={incrementCount} />
-      ))}
-
-      <Button
-        className="w-full mt-4"
-        onClick={() => setForms([...forms, forms.length])}
-      >
-        <Plus className="mr-2 h-4 w-4" /> Add Another
-      </Button>
-    </div>
-  );
-}
+  <script src="app.js"></script>
+</body>
+</html>
