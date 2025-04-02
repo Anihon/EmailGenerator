@@ -57,7 +57,16 @@ function addForm() {
   const [name, email, role, company] = form.querySelectorAll("input");
 
   const templates = {
-    referral: "Hi [Name],\n\nI saw a [Role] opening at [Company] and wanted to ask if you'd be open to referring me...",
+    referral: {
+      subject: "Thank You for Offering to Refer Me at [Company], Job Links are attached",
+      body:`Hi [Name],
+
+            Thank you so much for agreeing to refer me for roles at [Company]. I truly appreciate your support.
+            
+            Here are the roles I’m most interested in: [Role]
+            
+            I've attached my resume. Please let me know if you need any additional information from my end. Thanks again for your help!`
+    },
     interest: "Hi [Name],\n\nI'm interested in the [Role] role at [Company] and would love to connect...",
     applied: "Hi [Name],\n\nI've applied to the [Role] role at [Company] and wanted to follow up...",
     followup: "Hi [Name],\n\nJust checking in on the [Role] role at [Company] we discussed earlier...",
