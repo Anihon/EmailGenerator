@@ -95,10 +95,9 @@ function addForm() {
 
     I'm Ankit Gupta. I've an MBA from the University of Minnesota and a B.Tech in Computer Science from IIT Kanpur. I recently applied for the [Role] position on your team at [Company], and wanted to reach out directly to express my enthusiasm.
     
-    Before pursuing my MBA, I spent five years as a Software Engineer on the SD-WAN team at Juniper Networks, where I worked in a highly technical environment. During my MBA, I served as the founding Product Manager for a rideshare startup in Minneapolis, where I used data to shape growth strategies and improve operational efficiency. I’ve also worked as a strategy consultant for Minnesota-based companies, helping shape their go-to-market strategies.
-    Overall, I bring a strong mix of analytical rigor, business insight, and technical fluency.
-    
-    I've attached my resume. If possible, I welcome the opportunity to connect with you to get more insights. Thank you for your time — I look forward to the possibility of next steps!`,
+    If possible, I'd love the opportunity to discuss the opportunity over a brief zoom call. I am available on most afternoons. Please let me know your availability. I'll send a zoom invite accordingly. 
+
+    I've attached my resume. Looking forward to hearing from you!`,
     
       followup: `Subject: Following-up regarding [Role] at [Company]
     
