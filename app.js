@@ -95,7 +95,7 @@ function addForm() {
 
     I'm Ankit Gupta. I've an MBA from the University of Minnesota and a B.Tech in Computer Science from IIT Kanpur. I recently applied for the [Role] position on your team at [Company], and wanted to reach out directly to express my enthusiasm.
     
-    If possible, I'd love the opportunity to discuss the opportunity over a brief zoom call. I am available on most afternoons. Please let me know your availability. I'll send a zoom invite accordingly. 
+    I’d love to connect for a quick introductory call to learn more about your team. Please let me know your availability. I'll send a zoom invite accordingly. 
 
     I've attached my resume. Looking forward to hearing from you!`,
     
@@ -160,7 +160,7 @@ function addForm() {
     
       linkedIn_explore: `Hi [Name], 
     
-    I am a MBA grad from UMN and I have 5+ years of experience in software/product management. I am exploring [Role] roles and would love to join [Company]. I think my skills would be a great fit for your team. I am looking forward to connecting.
+    I am a MBA grad from UMN and I have 5+ years of experience in software/product management. I am exploring [Role] roles and would love to join [Company]. I’d love to connect for a quick introductory call to learn more about your team.
     
     Regards,  
     Ankit`,
